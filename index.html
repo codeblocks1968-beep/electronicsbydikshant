@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NexTech | Premium Electronics</title>
+    <meta name="description" content="High-end electronics, smartphones, laptops, and more. Experience the future of technology.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0ea5e9', // Sky 500
+                        secondary: '#6366f1', // Indigo 500
+                        dark: {
+                            bg: '#0f172a', // Slate 900
+                            card: '#1e293b', // Slate 800
+                            border: '#334155' // Slate 700
+                        },
+                        light: {
+                            bg: '#f8fafc', // Slate 50
+                            card: '#ffffff',
+                            border: '#e2e8f0' // Slate 200
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-light-bg dark:bg-dark-bg text-slate-900 dark:text-slate-100 transition-colors duration-300 antialiased overflow-x-hidden selection:bg-primary selection:text-white">
+    
+    <!-- Background Gradient Effects -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob dark:mix-blend-screen"></div>
+        <div class="absolute top-[20%] right-[-10%] w-96 h-96 bg-secondary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 dark:mix-blend-screen"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000 dark:mix-blend-screen"></div>
+        <div id="bg-particles" class="absolute inset-0 z-0 pointer-events-none"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-2 cursor-pointer">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-primary/30">N</div>
+                    <span class="font-bold text-xl tracking-tight">NexTech</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#productsSection" class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors">Products</a>
+                    <a href="#categoriesSection" class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors">Categories</a>
+                    <a href="#dealsSection" class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors">Deals</a>
+                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors">Support</a>
+                </div>
+
+                <!-- Icons & Actions -->
+                <div class="flex items-center space-x-4">
+                    <button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" aria-label="Search">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors" id="themeToggle" aria-label="Toggle Theme">
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors relative" aria-label="Cart">
+                        <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+                    </button>
+                    <button class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 hover:scale-105 transition-transform text-sm font-medium shadow-lg">
+                        Sign In
+                    </button>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button class="md:hidden p-2" id="mobileMenuBtn">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="z-10 animate-slide-up">
+                    <span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6 border border-primary/20 backdrop-blur-sm">New Arrival</span>
+                    <h1 class="text-5xl lg:text-7xl font-bold tracking-tight mb-6 leading-tight">
+                        Experience the <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Future Today.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-lg leading-relaxed">
+                        Discover our premium collection of cutting-edge electronics. Designed to elevate your everyday life with unparalleled performance and style.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="px-8 py-4 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-medium hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+                            Shop Now <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                        <button class="px-8 py-4 rounded-full glass-card font-medium hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors flex items-center gap-2">
+                            View Specs
+                        </button>
+                    </div>
+                </div>
+                <div class="relative z-10 animate-fade-in flex justify-center lg:justify-end animate-float">
+                    <!-- Hero Image Mockup Container -->
+                    <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden glass-card p-4 group">
+                        <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-500"></div>
+                        <img src="https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=1000&auto=format&fit=crop" alt="Premium Smartphone" class="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out">
+                    </div>
+                    <!-- Floating Elements -->
+                    <div class="absolute -left-8 top-1/4 glass-card p-3 rounded-2xl animate-blob">
+                        <i data-lucide="battery-charging" class="w-6 h-6 text-green-500"></i>
+                    </div>
+                    <div class="absolute -right-4 bottom-1/4 glass-card p-3 rounded-2xl animate-blob animation-delay-2000">
+                        <i data-lucide="wifi" class="w-6 h-6 text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Categories -->
+        <section id="categoriesSection" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">Explore Categories</h2>
+                    <p class="text-slate-600 dark:text-slate-400">Find exactly what you need.</p>
+                </div>
+                <a href="#" class="hidden sm:flex items-center gap-1 text-primary hover:text-secondary transition-colors font-medium">
+                    View All <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <!-- Category Cards will be injected by JS -->
+            </div>
+        </section>
+
+        <!-- Trending Products -->
+        <section id="productsSection" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
+            <h2 class="text-3xl font-bold mb-12 text-center">Trending Now</h2>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8" id="productsGrid">
+                <!-- Product Cards injected by JS -->
+            </div>
+        </section>
+        
+        <!-- Deals Section -->
+        <section id="dealsSection" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
+            <div class="glass-card rounded-3xl p-8 lg:p-12 overflow-hidden relative border border-primary/20">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full filter blur-3xl -z-10"></div>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="text-red-500 font-bold tracking-wider uppercase text-sm mb-2 block">Flash Sale</span>
+                        <h2 class="text-4xl font-bold mb-4">Pro Noise Cancelling Headphones</h2>
+                        <p class="text-slate-600 dark:text-slate-400 mb-8">Experience pure audio with our industry-leading active noise cancellation. Up to 30 hours of battery life.</p>
+                        
+                        <div class="flex gap-4 mb-8">
+                            <div class="glass-card px-4 py-3 rounded-xl text-center min-w-[70px]">
+                                <span class="block text-2xl font-bold">12</span>
+                                <span class="text-xs text-slate-500">Hours</span>
+                            </div>
+                            <div class="glass-card px-4 py-3 rounded-xl text-center min-w-[70px]">
+                                <span class="block text-2xl font-bold">45</span>
+                                <span class="text-xs text-slate-500">Mins</span>
+                            </div>
+                            <div class="glass-card px-4 py-3 rounded-xl text-center min-w-[70px]">
+                                <span class="block text-2xl font-bold">30</span>
+                                <span class="text-xs text-slate-500">Secs</span>
+                            </div>
+                        </div>
+                        
+                        <button id="grabDealBtn" class="px-8 py-3 rounded-full bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-medium hover:scale-105 transition-transform">
+                            Grab Deal - $299
+                        </button>
+                    </div>
+                    <div class="relative flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1000&auto=format&fit=crop" alt="Headphones" class="w-full max-w-sm rounded-2xl shadow-2xl mix-blend-normal hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checkout Page (Hidden by default) -->
+        <section id="checkoutSection" class="hidden py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto animate-fade-in">
+            <button onclick="hideCheckout()" class="flex items-center gap-2 text-slate-500 hover:text-primary mb-8 transition-colors">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Shopping
+            </button>
+            <h2 class="text-4xl font-bold mb-12">Secure Checkout</h2>
+            <div class="grid lg:grid-cols-3 gap-12">
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><i data-lucide="truck" class="w-5 h-5"></i> Shipping Address</h3>
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <input type="text" placeholder="First Name" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary outline-none">
+                            <input type="text" placeholder="Last Name" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary outline-none">
+                            <input type="email" placeholder="Email Address" class="sm:col-span-2 p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary outline-none">
+                            <input type="text" placeholder="Street Address" class="sm:col-span-2 p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary outline-none">
+                            <input type="text" placeholder="City" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary outline-none">
+                            <input type="text" placeholder="Postal Code" class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary outline-none">
+                        </div>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h3 class="text-xl font-bold mb-6 flex items-center gap-2"><i data-lucide="credit-card" class="w-5 h-5"></i> Payment Method</h3>
+                        <div class="space-y-4">
+                            <label class="flex items-center gap-4 p-4 rounded-xl border-2 border-primary bg-primary/5 cursor-pointer">
+                                <input type="radio" name="payment" checked class="w-5 h-5 accent-primary">
+                                <span class="font-bold flex-1">Credit / Debit Card</span>
+                                <div class="flex gap-2">
+                                    <i data-lucide="credit-card" class="w-6 h-6 opacity-40"></i>
+                                </div>
+                            </label>
+                            <label class="flex items-center gap-4 p-4 rounded-xl border border-light-border dark:border-dark-border cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                <input type="radio" name="payment" class="w-5 h-5 accent-primary">
+                                <span class="font-bold flex-1">PayPal</span>
+                                <i data-lucide="info" class="w-5 h-5 opacity-40"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="glass-card p-8 rounded-3xl sticky top-32">
+                        <h3 class="text-xl font-bold mb-6">Order Summary</h3>
+                        <div id="checkoutItems" class="space-y-4 mb-6">
+                            <!-- Items list -->
+                        </div>
+                        <div class="border-t border-light-border dark:border-dark-border pt-4 space-y-2 mb-6">
+                            <div class="flex justify-between text-slate-500">
+                                <span>Subtotal</span>
+                                <span id="checkoutSubtotal">$0.00</span>
+                            </div>
+                            <div class="flex justify-between text-slate-500">
+                                <span>Shipping</span>
+                                <span class="text-green-500">Free</span>
+                            </div>
+                            <div class="flex justify-between text-xl font-bold pt-2">
+                                <span>Total</span>
+                                <span id="checkoutTotal">$0.00</span>
+                            </div>
+                        </div>
+                        <button id="placeOrderBtn" class="w-full py-4 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 font-bold hover:bg-primary hover:text-white dark:hover:bg-primary transition-all shadow-xl">
+                            Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Deals Section -->
+        <section id="specialDealsSection" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto reveal">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-3xl font-bold">Special <span class="text-primary">Deals</span></h2>
+                <div class="h-[2px] flex-1 bg-gradient-to-r from-primary/50 to-transparent"></div>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8" id="dealsGrid">
+                <!-- Deal Cards injected by JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-nav mt-20 pt-16 pb-8 border-t border-light-border dark:border-dark-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-xl">N</div>
+                        <span class="font-bold text-xl">NexTech</span>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Premium electronics for the modern world. We bring you the future of technology today.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-slate-400 hover:text-primary transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-primary transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-primary transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Shop</h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">Smartphones</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Laptops</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Audio</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Wearables</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Support</h3>
+                    <ul class="space-y-3 text-sm text-slate-600 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Track Order</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Returns</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Warranty</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold mb-4">Subscribe</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Get the latest deals and news.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="w-full px-4 py-2 rounded-l-lg bg-light-card dark:bg-dark-card border border-light-border dark:border-dark-border focus:outline-none focus:border-primary text-sm">
+                        <button class="px-4 py-2 bg-primary text-white rounded-r-lg hover:bg-secondary transition-colors">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-light-border dark:border-dark-border text-center text-sm text-slate-500">
+                &copy; 2026 NexTech. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cartSidebar" class="fixed inset-0 z-[60] invisible pointer-events-none transition-all duration-500">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 transition-opacity duration-500" id="cartOverlay"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-light-bg dark:bg-dark-bg shadow-2xl translate-x-full transition-transform duration-500 flex flex-col pointer-events-auto">
+            <div class="p-6 border-b border-light-border dark:border-dark-border flex justify-between items-center">
+                <h2 class="text-xl font-bold flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-primary"></i> Your Cart
+                </h2>
+                <button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors" id="closeCart">
+                    <i data-lucide="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-6 space-y-6" id="cartItems">
+                <!-- Cart items injected here -->
+                <div class="text-center py-12 text-slate-500">
+                    <i data-lucide="shopping-cart" class="w-12 h-12 mx-auto mb-4 opacity-20"></i>
+                    <p>Your cart is empty</p>
+                </div>
+            </div>
+            <div class="p-6 border-t border-light-border dark:border-dark-border bg-slate-50/50 dark:bg-slate-900/50">
+                <div class="flex justify-between mb-4">
+                    <span class="text-slate-600 dark:text-slate-400">Subtotal</span>
+                    <span class="font-bold text-xl" id="cartTotal">$0.00</span>
+                </div>
+                <button id="checkoutSidebarBtn" class="w-full py-4 rounded-xl bg-primary text-white font-bold hover:bg-secondary transition-all shadow-lg shadow-primary/20 mb-3">
+                    Checkout Now
+                </button>
+                <p class="text-center text-xs text-slate-500">Shipping and taxes calculated at checkout</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="fixed inset-0 z-[70] invisible pointer-events-none transition-all duration-300 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 transition-opacity duration-300" id="modalOverlay"></div>
+        <div class="glass-card w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl relative pointer-events-auto scale-95 opacity-0 transition-all duration-300">
+            <button class="absolute top-6 right-6 z-10 p-2 glass-card hover:bg-red-50 hover:text-red-500 rounded-full transition-colors" id="closeModal">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div id="modalContent" class="p-8 lg:p-12">
+                <!-- Product content injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="fixed inset-0 z-[80] invisible pointer-events-none transition-all duration-300 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 transition-opacity duration-300" id="authOverlay"></div>
+        <div class="glass-card w-full max-w-md rounded-3xl relative pointer-events-auto scale-95 opacity-0 transition-all duration-300 p-8">
+            <button class="absolute top-6 right-6 p-2 glass-card hover:bg-red-50 hover:text-red-500 rounded-full transition-colors" id="closeAuth">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <div class="text-center mb-8">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white font-bold text-2xl mx-auto mb-4">N</div>
+                <h2 class="text-2xl font-bold">Welcome Back</h2>
+                <p class="text-slate-500">Sign in to your NexTech account</p>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold mb-2">Email Address</label>
+                    <input type="email" placeholder="name@example.com" class="w-full p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2">Password</label>
+                    <input type="password" placeholder="••••••••" class="w-full p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border-none focus:ring-2 focus:ring-primary outline-none">
+                </div>
+                <button type="button" class="w-full py-4 rounded-xl bg-primary text-white font-bold hover:bg-secondary transition-all shadow-lg shadow-primary/20">
+                    Sign In
+                </button>
+            </form>
+            <p class="text-center text-sm text-slate-500 mt-6">
+                Don't have an account? <a href="#" class="text-primary font-bold">Create one</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
