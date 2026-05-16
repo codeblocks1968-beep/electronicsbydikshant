@@ -469,7 +469,7 @@ function renderCategories() {
         { name: 'Watches', icon: 'watch' },
         { name: 'Gaming', icon: 'gamepad-2' }
     ];
-    const container = document.querySelector('.grid.grid-cols-2.md\\:grid-cols-3.lg\\:grid-cols-6');
+    const container = document.getElementById('categoriesGrid');
     if (!container) return;
     container.innerHTML = categories.map(cat => `
         <div onclick="filterProducts('${cat.name}')" class="glass-card flex flex-col items-center justify-center p-6 rounded-2xl hover:scale-105 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all cursor-pointer group">
@@ -547,7 +547,6 @@ lucide.createIcons();
 const authModal = document.getElementById('authModal');
 const authOverlay = document.getElementById('authOverlay');
 const closeAuth = document.getElementById('closeAuth');
-const signInBtns = document.querySelectorAll('button:contains("Sign In"), button:contains("Login")');
 
 window.openAuth = () => {
     authModal.classList.remove('invisible');
@@ -568,11 +567,15 @@ window.closeAuthModal = () => {
 closeAuth.addEventListener('click', closeAuthModal);
 authOverlay.addEventListener('click', closeAuthModal);
 
-// Helper for selecting by text (for the Sign In buttons)
-document.querySelectorAll('button').forEach(btn => {
-    if (btn.innerText.trim() === 'Sign In') {
-        btn.addEventListener('click', openAuth);
-    }
-});
+// Initialize Sign In buttons
+function initAuthButtons() {
+    document.querySelectorAll('button').forEach(btn => {
+        const text = btn.innerText.trim().toLowerCase();
+        if (text === 'sign in' || text === 'login') {
+            btn.addEventListener('click', openAuth);
+        }
+    });
+}
+initAuthButtons();
 
 
