@@ -147,6 +147,174 @@ const products = [
         tag: 'Deal',
         description: 'World-class noise cancellation. Breakthrough spatialized audio. Premium comfort.',
         specs: { 'Type': 'Over-ear', 'Battery': '24 Hours', 'Bluetooth': '5.3' }
+    },
+    {
+        id: 13,
+        name: 'Google Pixel 8 Pro',
+        category: 'Smartphones',
+        price: 999,
+        rating: 4.8,
+        reviews: 780,
+        image: 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Trending',
+        description: 'The all-pro phone engineered by Google. It has the best of Google AI, the most advanced Pixel Camera ever, and can help you do more, even faster.',
+        specs: { 'Display': '6.7-inch Super Actua Display', 'Chip': 'Google Tensor G3', 'Camera': '50MP Main | 48MP Wide | 48MP Telephoto', 'AI Features': 'Magic Eraser | Best Take | Circle to Search' }
+    },
+    {
+        id: 14,
+        name: 'Samsung Galaxy Z Fold 5',
+        category: 'Smartphones',
+        price: 1799,
+        rating: 4.7,
+        reviews: 310,
+        image: 'https://images.unsplash.com/photo-1610945415295-d9b226bdf4c0?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Premium',
+        description: 'The ultimate 7.6-inch screen mobile device. Unfold an immersive, expansive screen — reimagined to bring you PC-like gaming, massive productivity, and breathtaking viewing.',
+        specs: { 'Display': '7.6-inch Dynamic AMOLED 2X Main', 'Processor': 'Snapdragon 8 Gen 2', 'Foldable Tech': 'Flex Hinge', 'Multitasking': 'Up to 3 active windows' }
+    },
+    {
+        id: 15,
+        name: 'ASUS ROG Zephyrus G14',
+        category: 'Laptops',
+        price: 1599,
+        rating: 4.8,
+        reviews: 540,
+        image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Popular',
+        description: 'The world\'s most powerful 14-inch gaming laptop. Light, portable, and featuring a stunning Nebula HDR display with high refresh rates and NVIDIA RTX graphics.',
+        specs: { 'Display': '14-inch Nebula HDR 165Hz', 'Processor': 'AMD Ryzen 9', 'Graphics': 'NVIDIA GeForce RTX 4070', 'Weight': '3.64 lbs' }
+    },
+    {
+        id: 16,
+        name: 'HP Spectre x360 14',
+        category: 'Laptops',
+        price: 1449,
+        rating: 4.7,
+        reviews: 420,
+        image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?q=80&w=1000&auto=format&fit=crop',
+        tag: 'New',
+        description: 'Crafted for perfection. A 2-in-1 convertible laptop featuring a spectacular OLED display, premium gem-cut chassis, and smart features that adapt to your work style.',
+        specs: { 'Display': '14-inch 2.8K OLED Touchscreen', 'Processor': 'Intel Core Ultra 7', 'Design': '2-in-1 Convertible', 'Battery': 'Up to 15 hours' }
+    },
+    {
+        id: 17,
+        name: 'Apple AirPods Max',
+        category: 'Headphones',
+        price: 549,
+        rating: 4.7,
+        reviews: 1850,
+        image: 'https://images.unsplash.com/photo-1613040809024-b4ef7ba99bc3?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Bestseller',
+        description: 'A perfect balance of exhilarating high-fidelity audio and the effortless magic of AirPods. The ultimate personal listening experience is here.',
+        specs: { 'Type': 'Over-ear', 'Chip': 'Apple H1 (each cup)', 'Audio Tech': 'Active Noise Cancellation | Spatial Audio', 'Battery': 'Up to 20 hours' }
+    },
+    {
+        id: 18,
+        name: 'Sennheiser Momentum 4',
+        category: 'Headphones',
+        price: 299,
+        rating: 4.8,
+        reviews: 980,
+        image: 'https://images.unsplash.com/photo-1545127862-40ff62c80824?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Deal',
+        description: 'Sennheiser Signature Sound combined with premium active noise cancellation and an outstanding 60-hour battery life.',
+        specs: { 'Type': 'Over-ear', 'Battery Life': 'Up to 60 hours', 'ANC': 'Adaptive Noise Cancellation', 'Codec Support': 'aptX Adaptive | AAC | SBC' }
+    },
+    {
+        id: 19,
+        name: 'Garmin Fenix 7 Pro Solar',
+        category: 'Watches',
+        price: 799,
+        rating: 4.9,
+        reviews: 620,
+        image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Trending',
+        description: 'The ultimate multisport GPS smartwatch designed to perform all day, every day. Features a solar charging lens for battery life that stretches limits.',
+        specs: { 'Display': '1.3-inch Solar Charged', 'GPS': 'Multi-band GNSS with SatIQ', 'Sensors': 'Wrist Heart Rate | Pulse Ox | Compass', 'Battery': 'Up to 22 days in smartwatch mode' }
+    },
+    {
+        id: 20,
+        name: 'Galaxy Watch 6 Classic',
+        category: 'Watches',
+        price: 399,
+        rating: 4.7,
+        reviews: 840,
+        image: 'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=1000&auto=format&fit=crop',
+        tag: 'New',
+        description: 'The watch that knows you best is back with a personalized health experience and an upgraded, iconic rotating bezel.',
+        specs: { 'Bezel': 'Physical Rotating Bezel', 'Display': 'Super AMOLED', 'Health Metrics': 'BIA Body Composition | ECG | Sleep Coaching', 'OS': 'Wear OS Powered by Samsung' }
+    },
+    {
+        id: 21,
+        name: 'Nintendo Switch OLED',
+        category: 'Gaming',
+        price: 349,
+        rating: 4.9,
+        reviews: 4200,
+        image: 'https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Bestseller',
+        description: 'Play at home on the TV or on-the-go with a vibrant 7-inch OLED screen, a wide adjustable stand, and wired LAN port.',
+        specs: { 'Screen': '7-inch OLED Screen', 'Modes': 'TV | Tabletop | Handheld', 'Storage': '64GB Internal', 'Audio': 'Enhanced Onboard Audio' }
+    },
+    {
+        id: 22,
+        name: 'Xbox Series X Console',
+        category: 'Gaming',
+        price: 499,
+        rating: 4.8,
+        reviews: 3800,
+        image: 'https://images.unsplash.com/photo-1605901309584-818e25960a8f?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Popular',
+        description: 'The fastest, most powerful Xbox ever. Experience true 4K gaming, up to 120 FPS, and 12 teraflops of graphic processing power.',
+        specs: { 'Processor': 'Custom Zen 2 & RDNA 2', 'Resolution': 'True 4K (8K Ready)', 'Frame Rate': 'Up to 120 FPS', 'Storage': '1TB Custom NVMe SSD' }
+    },
+    {
+        id: 23,
+        name: 'ASUS ROG Ally',
+        category: 'Gaming',
+        price: 699,
+        rating: 4.6,
+        reviews: 1150,
+        image: 'https://images.unsplash.com/photo-1531525645387-7f14be1bdbbd?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Trending',
+        description: 'A true Windows 11 handheld gaming machine powered by AMD\'s latest Ryzen Z1 Extreme processor and custom RDNA 3 graphics.',
+        specs: { 'Processor': 'AMD Ryzen Z1 Extreme', 'Display': '7-inch 1080p 120Hz Touchscreen', 'OS': 'Windows 11 Home', 'Storage': '512GB PCIe 4.0 NVMe SSD' }
+    },
+    {
+        id: 24,
+        name: 'Sony Alpha 7 IV Mirrorless',
+        category: 'Cameras',
+        price: 2499,
+        rating: 4.9,
+        reviews: 810,
+        image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Professional',
+        description: 'The perfect hybrid. Featuring a new 33MP Exmor R CMOS sensor, advanced auto focus, and 4K 60p video capabilities.',
+        specs: { 'Sensor': '33MP Full-Frame Exmor R CMOS', 'AF System': 'Real-time Eye AF (Human/Animal/Bird)', 'Video': '4K 60p 10-bit 4:2:2', 'Stabilization': '5-axis SteadyShot Active' }
+    },
+    {
+        id: 25,
+        name: 'Galaxy Tab S9 Ultra',
+        category: 'Tablets',
+        price: 1199,
+        rating: 4.8,
+        reviews: 430,
+        image: 'https://images.unsplash.com/photo-1589739900243-4b52cd9b104e?q=80&w=1000&auto=format&fit=crop',
+        tag: 'Premium',
+        description: 'The new standard for premium tablets. A massive 14.6-inch Dynamic AMOLED 2X display, IP68 water resistance, and an included S Pen.',
+        specs: { 'Display': '14.6-inch Dynamic AMOLED 2X (120Hz)', 'Processor': 'Snapdragon 8 Gen 2 for Galaxy', 'Stylus': 'S Pen Included (IP68)', 'Durability': 'Armor Aluminum Chassis' }
+    },
+    {
+        id: 26,
+        name: 'Microsoft Surface Pro 9',
+        category: 'Tablets',
+        price: 999,
+        rating: 4.7,
+        reviews: 690,
+        image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=1000&auto=format&fit=crop',
+        tag: 'New',
+        description: 'The power of a laptop, the flexibility of a tablet. Get the security, portability, and performance you need to move through your day.',
+        specs: { 'Processor': '12th Gen Intel Core i5/i7', 'Display': '13-inch PixelSense Flow Touchscreen', 'Battery': 'Up to 15.5 hours typical usage', 'OS': 'Windows 11 Home' }
     }
 ];
 
@@ -467,7 +635,9 @@ function renderCategories() {
         { name: 'Laptops', icon: 'laptop' },
         { name: 'Headphones', icon: 'headphones' },
         { name: 'Watches', icon: 'watch' },
-        { name: 'Gaming', icon: 'gamepad-2' }
+        { name: 'Gaming', icon: 'gamepad-2' },
+        { name: 'Tablets', icon: 'tablet' },
+        { name: 'Cameras', icon: 'camera' }
     ];
     const container = document.getElementById('categoriesGrid');
     if (!container) return;
